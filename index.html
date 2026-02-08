@@ -213,6 +213,84 @@
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
+        /* ============ PAGE LOAD ANIMATIONS ============ */
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #3d2817 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease-out 1.5s forwards;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .loader-logo {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease-out;
+            color: var(--color-accent-light);
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.2);
+            border-top-color: var(--color-accent-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -231,6 +309,7 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            animation: fadeIn 0.8s ease-out 1.6s both;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -354,6 +433,7 @@
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             backdrop-filter: blur(10px);
+            animation: slideDown 0.6s ease-out 1.8s both;
         }
 
         .nav-container {
@@ -417,24 +497,6 @@
         @keyframes silver-shine {
             0%, 100% { box-shadow: 0 3px 10px rgba(192, 192, 192, 0.5), inset 0 1px 2px rgba(255,255,255,0.5); }
             50% { box-shadow: 0 3px 15px rgba(192, 192, 192, 0.7), inset 0 1px 3px rgba(255,255,255,0.7); }
-        }
-
-        @media (max-width: 768px) {
-            .logo-img {
-                height: 45px;
-            }
-            
-            .anniversary-badge {
-                position: static;
-                margin-left: 8px;
-                font-size: 0.5rem;
-                padding: 4px 8px;
-            }
-            
-            .anniversary-badge::before,
-            .anniversary-badge::after {
-                font-size: 0.6rem;
-            }
         }
 
         .main-nav {
@@ -518,6 +580,10 @@
             margin: 0 auto;
             text-align: center;
         }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease-out both;
+        }
         
         .hero-badges {
             display: flex;
@@ -525,6 +591,7 @@
             gap: 16px;
             margin-bottom: 2.5rem;
             flex-wrap: wrap;
+            animation-delay: 2s;
         }
         
         .hero-badge {
@@ -549,6 +616,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             line-height: 1.1;
+            animation-delay: 2.2s;
         }
 
         .hero-highlight {
@@ -562,6 +630,7 @@
             margin-bottom: 3rem;
             font-weight: 300;
             letter-spacing: 0.5px;
+            animation-delay: 2.4s;
         }
 
         .cta-group {
@@ -569,6 +638,7 @@
             justify-content: center;
             gap: 1.25rem;
             flex-wrap: wrap;
+            animation-delay: 2.6s;
         }
 
         /* TRUST INDICATORS */
@@ -1090,6 +1160,32 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+
+            /* MOBILE FIX - Silver Jubilee */
+            .logo-img {
+                height: 45px;
+            }
+            
+            .anniversary-badge {
+                position: static;
+                margin-left: 4px;
+                font-size: 0.4rem;
+                padding: 3px 6px;
+                border-radius: 10px;
+                border-width: 1px;
+            }
+            
+            .anniversary-badge::before,
+            .anniversary-badge::after {
+                content: '';
+                margin: 0;
+                font-size: 0;
+            }
+            
+            .logo {
+                flex-wrap: nowrap;
+                gap: 6px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1108,10 +1204,24 @@
             .product-icon {
                 font-size: 3rem;
             }
+
+            .anniversary-badge {
+                font-size: 0.35rem;
+                padding: 2px 5px;
+                letter-spacing: 0.5px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo">WoodPecker</div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -1136,7 +1246,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home" style="background-image: url('/images/hero-bg.png'); background-size: cover; background-position: center;">
+    <section class="hero" id="home" style="background-image: url('images/hero-bg.png'); background-size: cover; background-position: center;">
         <div class="container hero-content">
             <div class="hero-badges">
                 <span class="hero-badge">Serving Since 1999</span>
