@@ -677,20 +677,20 @@
             font-weight: 500;
         }
 
-        /* PRODUCTS SECTION */
+        /* PRODUCTS SECTION - ENHANCED */
         .products-section {
             background: var(--color-light);
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 18px;
         }
 
         .product-card {
             background: var(--color-white);
-            padding: 45px 30px;
+            padding: 24px 20px;
             text-align: center;
             border-radius: 12px;
             transition: var(--transition-base);
@@ -705,7 +705,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
             transform: scaleX(0);
             transition: transform 0.3s ease;
@@ -716,28 +716,56 @@
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
             border-color: var(--color-accent-light);
         }
 
-        .product-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1;
-            filter: grayscale(0.2);
+        /* SVG Icon Styling */
+        .product-icon-svg {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            color: var(--color-accent);
+            transition: var(--transition-base);
+        }
+
+        .product-card:hover .product-icon-svg {
+            color: var(--color-secondary);
+            transform: scale(1.08);
+        }
+
+        .product-icon-svg svg {
+            width: 100%;
+            height: 100%;
         }
 
         .product-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
             color: var(--color-dark);
+            font-weight: 600;
         }
 
         .product-card p {
-            font-size: 0.95rem;
+            font-size: 0.875rem;
             color: var(--color-text-light);
-            line-height: 1.6;
+            line-height: 1.5;
+        }
+
+        /* Highlighted Custom Furniture Card */
+        .product-card-highlight {
+            background: linear-gradient(135deg, rgba(166, 124, 82, 0.05) 0%, rgba(139, 111, 71, 0.08) 100%);
+            border: 2px solid var(--color-accent);
+        }
+
+        .product-card-highlight::before {
+            transform: scaleX(1);
+            height: 4px;
+        }
+
+        .product-card-highlight h3 {
+            color: var(--color-secondary);
         }
 
         /* WHY CHOOSE US */
@@ -1150,7 +1178,29 @@
                 gap: 30px;
             }
 
-            .products-grid,
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .product-card {
+                padding: 18px 14px;
+            }
+
+            .product-card h3 {
+                font-size: 1rem;
+            }
+
+            .product-card p {
+                font-size: 0.8rem;
+            }
+
+            .product-icon-svg {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 12px;
+            }
+
             .features-list,
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -1201,8 +1251,24 @@
                 font-size: 2.5rem;
             }
 
-            .product-icon {
-                font-size: 3rem;
+            .product-icon-svg {
+                width: 36px;
+                height: 36px;
+                margin-bottom: 10px;
+            }
+
+            .product-card {
+                padding: 16px 12px;
+            }
+
+            .product-card h3 {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+
+            .product-card p {
+                font-size: 0.75rem;
+                line-height: 1.4;
             }
 
             .anniversary-badge {
@@ -1227,7 +1293,7 @@
     <header>
         <div class="container nav-container">
             <a href="#home" class="logo">
-                <img src="logo2.svg" alt="WoodPecker Furniture Logo" class="logo-img">
+                <img src="logo3.svg" alt="WoodPecker Furniture Logo" class="logo-img">
                 <span class="anniversary-badge">Silver Jubilee</span>
             </a>
 
@@ -1298,30 +1364,185 @@
                 <p class="section-description">Handcrafted furniture built to last, customized to your exact specifications</p>
             </div>
             <div class="products-grid">
+                <!-- Living Room -->
                 <div class="product-card">
-                    <div class="product-icon">🛋️</div>
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 9V6C20 4.89543 19.1046 4 18 4H6C4.89543 4 4 4.89543 4 6V9M20 9H4M20 9V16C20 17.1046 19.1046 18 18 18H6C4.89543 18 4 17.1046 4 16V9"/>
+                            <path d="M2 9H22"/>
+                            <path d="M6 18V20M18 18V20"/>
+                        </svg>
+                    </div>
                     <h3>Sofa Sets</h3>
-                    <p>Modern, Chesterfield, L-Shaped & Custom Designs</p>
+                    <p>Modern, Chesterfield, L-Shaped, Sectional & Recliner Sofas</p>
                 </div>
+
+                <!-- Bedroom -->
                 <div class="product-card">
-                    <div class="product-icon">🛏️</div>
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="9" rx="1"/>
+                            <path d="M3 11V8C3 6.89543 3.89543 6 5 6H19C20.1046 6 21 6.89543 21 8V11"/>
+                            <path d="M6 20V11M18 20V11"/>
+                        </svg>
+                    </div>
                     <h3>Beds</h3>
-                    <p>King, Queen, Storage Beds & Upholstered</p>
+                    <p>King, Queen, Single, Storage Beds & Upholstered Headboards</p>
                 </div>
+
+                <!-- Storage -->
                 <div class="product-card">
-                    <div class="product-icon">🚪</div>
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="4" width="16" height="16" rx="1"/>
+                            <path d="M12 4V20M4 12H20"/>
+                            <circle cx="10" cy="12" r="0.5" fill="currentColor"/>
+                            <circle cx="14" cy="12" r="0.5" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3>Wardrobes</h3>
-                    <p>Sliding, Walk-in, Built-in & Custom Sizes</p>
+                    <p>Sliding, Walk-in, Built-in, 2-6 Door & Mirror Wardrobes</p>
                 </div>
+
+                <!-- Dining -->
                 <div class="product-card">
-                    <div class="product-icon">🍽️</div>
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="8" width="18" height="2" rx="0.5"/>
+                            <path d="M6 10V19M18 10V19M12 10V19"/>
+                            <circle cx="6" cy="20" r="1" fill="currentColor"/>
+                            <circle cx="18" cy="20" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3>Dining Tables</h3>
-                    <p>Solid Wood, Marble Top, 4-12 Seater</p>
+                    <p>4-12 Seater, Round, Rectangular, Marble & Glass Top</p>
                 </div>
+
+                <!-- Chairs -->
                 <div class="product-card">
-                    <div class="product-icon">✨</div>
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M7 10H17M7 10V6C7 4.89543 7.89543 4 9 4H15C16.1046 4 17 4.89543 17 6V10M7 10L6 14H18L17 10"/>
+                            <path d="M6 14V20M18 14V20"/>
+                            <path d="M8 20H10M14 20H16"/>
+                        </svg>
+                    </div>
+                    <h3>Chairs & Seating</h3>
+                    <p>Dining Chairs, Office Chairs, Accent Chairs & Benches</p>
+                </div>
+
+                <!-- Tables -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="8" width="16" height="2" rx="0.5"/>
+                            <path d="M6 10V19M18 10V19"/>
+                            <path d="M7 19H9M15 19H17"/>
+                        </svg>
+                    </div>
+                    <h3>Tables</h3>
+                    <p>Coffee Tables, Center Tables, Side Tables & Console Tables</p>
+                </div>
+
+                <!-- TV Units -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="4" width="20" height="11" rx="1"/>
+                            <path d="M2 12H22"/>
+                            <rect x="5" y="15" width="14" height="4" rx="0.5"/>
+                            <path d="M8 15V19M16 15V19"/>
+                        </svg>
+                    </div>
+                    <h3>TV Units & Entertainment</h3>
+                    <p>Wall-Mounted, Floor Standing, Modular & Storage Units</p>
+                </div>
+
+                <!-- Study & Office -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="7" width="16" height="2" rx="0.5"/>
+                            <path d="M6 9V18M18 9V18"/>
+                            <rect x="8" y="11" width="8" height="5" rx="0.5"/>
+                            <path d="M7 18H9M15 18H17"/>
+                        </svg>
+                    </div>
+                    <h3>Study & Office Desks</h3>
+                    <p>Computer Tables, Study Tables, Executive Desks & Workstations</p>
+                </div>
+
+                <!-- Storage Units -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="4" width="7" height="16" rx="0.5"/>
+                            <rect x="13" y="4" width="7" height="16" rx="0.5"/>
+                            <path d="M4 11H11M13 11H20"/>
+                            <circle cx="7.5" cy="7.5" r="0.5" fill="currentColor"/>
+                            <circle cx="16.5" cy="7.5" r="0.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Storage & Cabinets</h3>
+                    <p>Bookshelves, Display Units, Shoe Racks & Kitchen Cabinets</p>
+                </div>
+
+                <!-- Bedroom Furniture -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="4" y="8" width="6" height="10" rx="0.5"/>
+                            <rect x="14" y="8" width="6" height="10" rx="0.5"/>
+                            <path d="M4 13H10M14 13H20"/>
+                            <circle cx="7" cy="11" r="0.5" fill="currentColor"/>
+                            <circle cx="17" cy="11" r="0.5" fill="currentColor"/>
+                            <path d="M6 18V20M18 18V20"/>
+                        </svg>
+                    </div>
+                    <h3>Bedroom Furniture</h3>
+                    <p>Bedside Tables, Dressing Tables, Vanity Units & Chest of Drawers</p>
+                </div>
+
+                <!-- Kids Furniture -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="5" y="11" width="14" height="7" rx="1"/>
+                            <path d="M5 11V9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V11"/>
+                            <path d="M7 18V20M17 18V20"/>
+                            <circle cx="9" cy="9" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="9" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Kids Furniture</h3>
+                    <p>Bunk Beds, Study Tables, Storage Units & Toy Organizers</p>
+                </div>
+
+                <!-- Outdoor -->
+                <div class="product-card">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6 10H18M6 10V6C6 4.89543 6.89543 4 8 4H16C17.1046 4 18 4.89543 18 6V10M6 10L5 14H19L18 10"/>
+                            <path d="M5 14V19M19 14V19"/>
+                            <circle cx="12" cy="2" r="1" fill="currentColor"/>
+                            <path d="M12 2V4"/>
+                        </svg>
+                    </div>
+                    <h3>Outdoor & Garden</h3>
+                    <p>Patio Sets, Garden Benches, Outdoor Tables & Swing Chairs</p>
+                </div>
+
+                <!-- Custom -->
+                <div class="product-card product-card-highlight">
+                    <div class="product-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 3L4 7V17L12 21L20 17V7L12 3Z"/>
+                            <path d="M12 12L4 8M12 12L20 8M12 12V21"/>
+                            <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3>Custom Furniture</h3>
-                    <p>Your design, our craftsmanship</p>
+                    <p>Bring Your Vision to Life - Any Design, Any Size, Any Style</p>
                 </div>
             </div>
         </div>
